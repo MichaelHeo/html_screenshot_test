@@ -1,0 +1,60 @@
+<div class="jumbotron" style="padding-top: 100px;">
+	<h1 class="text-center">Squid Tags</h1>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+        <div class="alert alert-warning" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            Hashtags para teste: #developer, #instagood. Para verificar outros, veja as hashtags usadas nas fotos do perfil @mikaheo
+        </div>
+    
+        <div>
+            <form>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button ng-click="addTag()" class="btn btn-primary" type="button">
+                            Adicionar Tag
+                        </button>
+                    </span>
+                    <input class="form-control" placeholder="Digite o nome da nova hashtag" 
+                        ng-model="tag_name" ng-model-options="{ debounce: 500 }">
+                </div>
+            </form>
+        </div>
+
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        Escolha uma Hashtag abaixo
+                    </a>
+                    <div class="input-group" ng-repeat="tag in tagData">
+                        <button ng-click="getPic(tag.name)" class="list-group-item"><b>#</b>{{tag.name}}</button>
+                        <span class="input-group-btn">
+                            <button ng-click="removeTag(tag.name)" class="btn btn-danger" data-toggle="modal">X</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div ng-if="trustedUrl">
+                    <div ng-repeat="t in trustedUrl">
+                        <video width="400" controls>
+                            <source ng-src="{{t}}" type="video/mp4">
+                            <source ng-src="{{t}}" type="video/ogg">
+                        </video>
+                    </div>
+                </div>
+                <div class="input-group" ng-repeat="pic in picResult">
+                    <img src="{{pic.images.standard_resolution.url}}" height="200" style="border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+
+	</div> <!-- fim col-md-12 -->
+</div> <!-- fim row -->
